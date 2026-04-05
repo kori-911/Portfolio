@@ -180,7 +180,8 @@ export default function CaseStudyRenderer({ slug }: Props) {
   }, []);
 
   useEffect(() => {
-    fetch(`/case-studies/${slug}.html`)
+    // Use import.meta.env.BASE_URL so the fetch works on any deploy path
+    fetch(`${import.meta.env.BASE_URL}case-studies/${slug}.html`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.text();
