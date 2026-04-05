@@ -16,8 +16,7 @@ const skills = [
   { category: "Tools", items: ["Figma", "Sketch", "Adobe XD", "Framer", "Miro", "Illustrator", "After Effects"] },
 ];
 
-const featuredSlugs = ["triage-room", "monolith", "void-protocol"];
-const featuredProjects = projects.filter((p) => featuredSlugs.includes(p.slug));
+const featuredProjects = projects.filter((p) => !p.placeholder);
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -79,7 +78,7 @@ const MorseBackground = ({ paused }: { paused: boolean }) => {
         let cx = row.x % W;
         row.chars.forEach(ch => {
           if (cx > W + 30) return;
-          ctx.fillStyle = "rgba(0,0,0,0.08)";
+          ctx.fillStyle = "rgba(255,255,255,0.12)";
           if (ch === ".") {
             ctx.beginPath();
             ctx.arc(cx + DOT / 2, row.y, DOT / 2, 0, Math.PI * 2);
@@ -96,8 +95,8 @@ const MorseBackground = ({ paused }: { paused: boolean }) => {
 
       // Radial fade vignette
       const grad = ctx.createRadialGradient(W/2, H/2, H*0.1, W/2, H/2, H*0.9);
-      grad.addColorStop(0, "rgba(252,252,251,0)");
-      grad.addColorStop(1, "rgba(252,252,251,0.95)");
+      grad.addColorStop(0, "rgba(0,0,0,0)");
+      grad.addColorStop(1, "rgba(0,0,0,0.92)");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, W, H);
 
@@ -155,7 +154,7 @@ const Index = () => {
             transform: "translateY(-50%)",
             width: "600px",
             height: "400px",
-            background: "radial-gradient(ellipse at center, hsla(51, 100%, 50%, 0.03) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse at center, hsla(51, 100%, 50%, 0.07) 0%, transparent 70%)",
             zIndex: 0,
           }}
           animate={{ scale: [1, 1.08, 1], opacity: [0.6, 1, 0.6] }}
@@ -168,25 +167,25 @@ const Index = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <h1 className="font-display text-5xl md:text-7xl lg:text-[80px] leading-[1.08] tracking-[-0.01em] text-foreground mb-6">
+            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground mb-6">
               <ScrambleText text="SOURABH" /><br />
               <ScrambleText text="KORI" />
             </h1>
-            <div className="h-[2px] w-12 bg-primary mb-8" />
-            <p className="font-sans text-xl md:text-2xl text-foreground opacity-90 mb-4">
+            <div className="h-px w-16 bg-primary mb-8" />
+            <p className="font-display text-xl md:text-2xl text-foreground opacity-80 mb-4">
               Systems thinker. Enterprise UX.
             </p>
-            <p className="font-sans text-base text-muted-foreground leading-relaxed max-w-xl mb-12">
+            <p className="font-mono text-sm text-muted-foreground leading-relaxed max-w-xl mb-12">
               5 years designing for Fortune 100 supply chain software at o9 Solutions.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/work" className="border border-primary bg-primary text-primary-foreground px-6 py-3 font-mono text-[10px] font-medium uppercase tracking-widest hover:bg-primary/90 transition-colors">
+              <Link to="/work" className="border border-primary bg-primary text-primary-foreground px-8 py-4 font-mono text-xs font-medium uppercase tracking-wider hover:bg-primary/90 transition-colors">
                 View Work
               </Link>
-              <Link to="/about" className="border border-border px-6 py-3 font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground hover:border-foreground transition-colors">
+              <Link to="/about" className="border border-border px-8 py-4 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground hover:border-foreground transition-colors">
                 About Me
               </Link>
-              <ContactDrawer buttonText="Contact" buttonClassName="border border-border px-6 py-3 font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground hover:border-foreground transition-colors cursor-pointer" />
+              <ContactDrawer buttonText="Contact" buttonClassName="border border-border px-8 py-4 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground hover:border-foreground transition-colors cursor-pointer" />
             </div>
           </motion.div>
 
@@ -198,70 +197,64 @@ const Index = () => {
           >
             {/* SVG grid background */}
             <div className="absolute inset-0 pointer-events-none">
-              <svg className="w-full h-full text-muted-foreground opacity-20" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg className="w-full h-full text-muted-foreground opacity-40" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.5" />
+                  <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="0.5" opacity="0.3" />
                 </pattern>
                 <rect width="400" height="500" fill="url(#grid)" />
               </svg>
             </div>
 
             <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-default bg-background border border-border shadow-sm"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-default"
               onMouseEnter={() => setStatsHovered(true)}
               onMouseLeave={() => setStatsHovered(false)}
               animate={{
-                width: statsHovered ? 500 : 260,
-                height: statsHovered ? 320 : 80,
+                width: statsHovered ? 500 : 280,
+                height: statsHovered ? 320 : 120,
               }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               style={{ overflow: "hidden", position: "absolute" }}
             >
-              <MorseBackground paused={statsHovered} />
-              {/* Collapsed — single cycling stat */}
               <AnimatePresence mode="wait">
-                {!statsHovered && (
+                {!statsHovered ? (
                   <motion.div
-                    key={activeIndex}
+                    key={`collapsed-${activeIndex}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.35 }}
-                    className="flex flex-col items-center justify-center w-full h-full relative z-10"
+                    transition={{ duration: 0.25 }}
+                    className="flex flex-col items-start justify-center w-full h-full px-2"
                   >
-                    <span className="font-display text-4xl text-primary leading-none">
+                    <span className="font-display text-3xl text-foreground leading-tight w-full">
                       {stats[activeIndex].value}
                     </span>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mt-2">
+                    <span className="font-mono text-[11px] uppercase tracking-widest text-foreground/60 mt-2 leading-snug">
                       {stats[activeIndex].label}
                     </span>
                   </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Expanded — 3x2 typographic layout, no borders */}
-              <AnimatePresence>
-                {statsHovered && (
+                ) : (
                   <motion.div
+                    key="expanded"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2, delay: 0.25 }}
-                    className="grid grid-cols-3 grid-rows-2 gap-x-8 gap-y-8 px-6 py-8 w-full h-full relative z-10"
+                    transition={{ duration: 0.3 }}
+                    className="grid grid-cols-3 grid-rows-2 gap-x-8 gap-y-8 px-4 py-4 w-full h-full"
                   >
                     {stats.map((stat, i) => (
                       <motion.div
                         key={i}
-                        initial={{ opacity: 0, y: 8 }}
+                        initial={{ opacity: 0, y: 6 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: 0.2 + i * 0.06 }}
+                        transition={{ duration: 0.25, delay: i * 0.05 }}
                         className={`flex flex-col justify-center ${stat.award ? "cursor-pointer group" : ""}`}
                         onClick={() => stat.award && stat.cert ? setLightboxCert(stat.cert) : null}
                       >
-                        <span className={`font-display text-2xl leading-tight ${stat.award ? "text-primary" : "text-foreground"} ${stat.award ? "group-hover:underline underline-offset-2" : ""}`}>
+                        <span className={`font-display text-lg leading-tight ${stat.award ? "text-primary group-hover:underline underline-offset-2" : "text-foreground"}`}>
                           {stat.value}
                         </span>
-                        <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground mt-2 leading-snug">
+                        <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground mt-1 leading-snug">
                           {stat.label}
                         </span>
                       </motion.div>
@@ -275,88 +268,80 @@ const Index = () => {
       </section>
 
       {/* Skills / Stack */}
-      <motion.section className="px-8 md:px-16 py-24 border-t border-border bg-surface" {...fadeIn}>
-        <div className="max-w-7xl mx-auto">
-          <span className="font-mono text-[10.5px] font-medium text-primary uppercase tracking-[3px] block mb-12">
-            DESIGN STACK
-          </span>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {skills.map((group) => (
-              <div key={group.category}>
-                <h3 className="font-sans text-base font-bold text-foreground mb-4">{group.category}</h3>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((skill) => (
-                    <span
-                      key={skill}
-                      className="font-mono text-[9.5px] font-medium uppercase tracking-[0.5px] text-muted-foreground bg-background border border-border px-3 py-1 rounded-full"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+      <motion.section className="px-8 md:px-16 py-24 border-t border-border" {...fadeIn}>
+        <span className="font-mono text-xs font-medium text-primary uppercase tracking-wider block mb-12">
+          DESIGN STACK
+        </span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          {skills.map((group) => (
+            <div key={group.category}>
+              <h3 className="font-display text-sm text-foreground mb-4">{group.category}</h3>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((skill) => (
+                  <span
+                    key={skill}
+                    className="border border-border px-3 py-1.5 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </motion.section>
 
       {/* Featured Work */}
       <motion.section className="px-8 md:px-16 py-24 border-t border-border" {...fadeIn}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <span className="font-mono text-[10.5px] font-medium text-primary uppercase tracking-[3px] block mb-4">
-                SELECTED PROJECTS
-              </span>
-              <h2 className="font-display text-3xl md:text-4xl text-foreground">FEATURED WORK</h2>
-              <div className="h-[2px] w-12 bg-primary mt-4" />
-            </div>
-            <Link
-              to="/work"
-              className="font-mono text-[10px] font-medium text-muted-foreground uppercase tracking-widest hover:text-primary transition-colors hidden md:block"
-            >
-              View All →
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} featured />
-            ))}
+        <div className="flex items-end justify-between mb-12">
+          <div>
+            <span className="font-mono text-xs font-medium text-primary uppercase tracking-wider block mb-4">
+              SELECTED PROJECTS
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl text-foreground">FEATURED WORK</h2>
           </div>
           <Link
             to="/work"
-            className="font-mono text-[10px] font-medium text-muted-foreground uppercase tracking-widest hover:text-primary transition-colors block mt-8 md:hidden"
+            className="font-mono text-xs font-medium text-muted-foreground uppercase tracking-wider hover:text-primary transition-colors hidden md:block"
           >
-            View All Projects →
+            View All →
           </Link>
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          {featuredProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} featured />
+          ))}
+        </div>
+        <Link
+          to="/work"
+          className="font-mono text-xs font-medium text-muted-foreground uppercase tracking-wider hover:text-primary transition-colors block mt-8 md:hidden"
+        >
+          View All Projects →
+        </Link>
       </motion.section>
 
       {/* Contact CTA */}
-      <section className="px-8 md:px-16 py-24 border-t border-border bg-surface">
+      <section className="px-8 md:px-16 py-24 border-t border-border">
         <motion.div
-          className="max-w-7xl mx-auto"
+          className="max-w-xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="max-w-xl">
-            <span className="font-mono text-[10.5px] font-medium text-primary uppercase tracking-[3px] block mb-8">
-              LET'S CONNECT
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
-              INTERESTED IN WORKING TOGETHER?
-            </h2>
-            <div className="h-[2px] w-12 bg-primary mb-6" />
-            <p className="font-sans text-base text-muted-foreground leading-relaxed mb-8">
-              I'm always open to discussing new projects, design challenges, or opportunities
-              to collaborate. Drop me a line.
-            </p>
-            <ContactDrawer 
-              buttonClassName="border border-primary bg-primary text-primary-foreground px-6 py-3 font-mono text-[10px] font-medium uppercase tracking-widest hover:bg-primary/90 transition-colors inline-block cursor-pointer" 
-            />
-          </div>
+          <span className="font-mono text-xs font-medium text-primary uppercase tracking-wider block mb-8">
+            LET'S CONNECT
+          </span>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
+            INTERESTED IN WORKING TOGETHER?
+          </h2>
+          <p className="font-mono text-sm text-muted-foreground leading-relaxed mb-8">
+            I'm always open to discussing new projects, design challenges, or opportunities
+            to collaborate. Drop me a line.
+          </p>
+          <ContactDrawer 
+            buttonClassName="border border-primary bg-primary text-primary-foreground px-8 py-4 font-mono text-xs font-medium uppercase tracking-wider hover:bg-primary/90 transition-colors inline-block cursor-pointer" 
+          />
         </motion.div>
       </section>
 

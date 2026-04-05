@@ -26,10 +26,10 @@ export default function CertLightbox({ cert, onClose }: CertLightboxProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-6 py-4 border-b border-border">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Certificate</span>
+              <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Certificate</span>
               <button
                 onClick={onClose}
-                className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               >
                 Close ✕
               </button>
