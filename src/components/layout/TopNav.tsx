@@ -36,7 +36,7 @@ export default function TopNav() {
         <div className="flex items-center justify-between px-6 h-full w-full">
           <Link
             to="/"
-            className="font-mono text-[11px] font-medium tracking-widest text-foreground hover:text-primary transition-colors"
+            className="font-mono text-[13px] tracking-widest text-foreground hover:text-primary transition-colors"
           >
             P. SOURABH KORI
           </Link>
@@ -49,7 +49,7 @@ export default function TopNav() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`font-mono text-[10px] font-medium uppercase tracking-widest transition-colors ${
+                  className={`font-mono text-[11px] uppercase tracking-widest transition-colors ${
                     isActivePage
                       ? "text-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -61,7 +61,7 @@ export default function TopNav() {
             })}
             <ContactDrawer
               buttonText="CONTACT"
-              buttonClassName="font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors cursor-pointer"
+              buttonClassName="font-mono text-[11px] uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors cursor-pointer"
             />
           </div>
 

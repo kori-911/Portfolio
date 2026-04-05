@@ -58,7 +58,7 @@ export default function Resume() {
   return (
     <PageWrapper className="min-h-screen bg-background pt-24 px-8 md:px-16 pb-24">
       <motion.div 
-        className="max-w-5xl mx-auto"
+        className="max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -67,10 +67,10 @@ export default function Resume() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 border-b border-border pb-8">
           <div>
             <h1 className="font-display text-5xl md:text-7xl text-foreground mb-4">P. SOURABH KORI</h1>
-            <p className="font-mono text-[10px] uppercase tracking-widest text-primary max-w-md mb-2">
+            <p className="font-mono text-sm text-primary max-w-md mb-2">
               UX DESIGNER
             </p>
-            <p className="font-sans text-sm text-muted-foreground max-w-md">
+            <p className="font-mono text-sm text-muted-foreground max-w-md">
               A chronological record of professional experience, education, and capabilities.
             </p>
           </div>
@@ -80,38 +80,38 @@ export default function Resume() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
           {/* Main Content (Experience) */}
           <div className="lg:col-span-8">
-            <h2 className="font-mono text-[10px] font-medium text-primary uppercase tracking-widest mb-8">
+            <h2 className="font-mono text-xs font-medium text-primary uppercase tracking-wider mb-8">
               EXPERIENCE
             </h2>
             <div className="flex flex-col gap-12">
               {experience.map((job, index) => (
                 <div key={index} className="group">
                   <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-2 gap-2">
-                    <h3 className="font-display text-3xl text-foreground group-hover:text-primary transition-colors">
+                    <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">
                       {job.role}
                     </h3>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground whitespace-nowrap">
+                    <span className="font-mono text-xs text-muted-foreground whitespace-nowrap">
                       {job.period}
                     </span>
                   </div>
-                  <div className="font-sans text-base font-medium text-foreground mb-4 opacity-80">
+                  <div className="font-mono text-sm text-foreground mb-4 opacity-80">
                     {job.company}
                   </div>
                   {Array.isArray(job.description) ? (
-                    <ul className="list-none space-y-2 font-sans text-[14.5px] text-[#3a3a3a] leading-[1.65]">
+                    <ul className="list-none space-y-2 font-mono text-sm text-muted-foreground leading-relaxed">
                       {job.description.map((desc, i) => (
                         <li key={i} className="flex gap-3"><span className="text-primary">→</span> <span>{desc}</span></li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="font-sans text-[14.5px] text-[#3a3a3a] leading-[1.65]">
+                    <p className="font-mono text-sm text-muted-foreground leading-relaxed">
                       {job.description}
                     </p>
                   )}
                   {job.recognition && (
-                    <div className="mt-6 bg-surface border border-border p-6 rounded-lg">
-                      <h4 className="font-mono text-[10px] uppercase tracking-widest text-foreground mb-3">RECOGNITION:</h4>
-                      <ul className="list-none space-y-2 font-sans text-[14px] text-[#555] leading-[1.65]">
+                    <div className="mt-6">
+                      <h4 className="font-mono text-xs text-foreground mb-3">RECOGNITION:</h4>
+                      <ul className="list-none space-y-2 font-mono text-sm text-muted-foreground leading-relaxed">
                         {job.recognition.map((rec, i) => (
                           <li
                             key={i}
@@ -135,16 +135,16 @@ export default function Resume() {
           {/* Sidebar (Education & Skills) */}
           <div className="lg:col-span-4 flex flex-col gap-16">
             <div>
-              <h2 className="font-mono text-[10px] font-medium text-primary uppercase tracking-widest mb-8">
+              <h2 className="font-mono text-xs font-medium text-primary uppercase tracking-wider mb-8">
                 EDUCATION
               </h2>
               <div className="flex flex-col gap-8">
                 {education.map((edu, index) => (
                   <div key={index}>
-                    <h3 className="font-display text-xl text-foreground mb-1">
+                    <h3 className="font-display text-lg text-foreground mb-1">
                       {edu.degree}
                     </h3>
-                    <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    <div className="font-mono text-xs text-muted-foreground">
                       {edu.school}
                     </div>
                   </div>
@@ -153,38 +153,38 @@ export default function Resume() {
             </div>
 
             <div>
-              <h2 className="font-mono text-[10px] font-medium text-primary uppercase tracking-widest mb-8">
+              <h2 className="font-mono text-xs font-medium text-primary uppercase tracking-wider mb-8">
                 SKILLS & ABILITIES
               </h2>
               <div className="flex flex-col gap-6">
                 <div>
-                  <h3 className="font-sans text-[15px] font-bold text-foreground mb-2">Design & Strategy</h3>
-                  <p className="font-sans text-[14px] text-[#555] leading-[1.65]">Enterprise UX, Systems Thinking, AI-Integrated Workflows, Data Visualization, Dashboard Architecture, Interaction Design, Design Systems</p>
+                  <h3 className="font-display text-sm text-foreground mb-2">Design & Strategy</h3>
+                  <p className="font-mono text-xs text-muted-foreground leading-relaxed">Enterprise UX, Systems Thinking, AI-Integrated Workflows, Data Visualization, Dashboard Architecture, Interaction Design, Design Systems</p>
                 </div>
                 <div>
-                  <h3 className="font-sans text-[15px] font-bold text-foreground mb-2">Research</h3>
-                  <p className="font-sans text-[14px] text-[#555] leading-[1.65]">User Interviews, Contextual Inquiry, Usability Testing, Heuristic Evaluation, Journey Mapping, A/B Testing</p>
+                  <h3 className="font-display text-sm text-foreground mb-2">Research</h3>
+                  <p className="font-mono text-xs text-muted-foreground leading-relaxed">User Interviews, Contextual Inquiry, Usability Testing, Heuristic Evaluation, Journey Mapping, A/B Testing</p>
                 </div>
                 <div>
-                  <h3 className="font-sans text-[15px] font-bold text-foreground mb-2">Accessibility</h3>
-                  <p className="font-sans text-[14px] text-[#555] leading-[1.65]">WCAG 2.1, Keyboard Accessibility, Screen Reader Annotation, ARIA Labels, Color Contrast Testing</p>
+                  <h3 className="font-display text-sm text-foreground mb-2">Accessibility</h3>
+                  <p className="font-mono text-xs text-muted-foreground leading-relaxed">WCAG 2.1, Keyboard Accessibility, Screen Reader Annotation, ARIA Labels, Color Contrast Testing</p>
                 </div>
                 <div>
-                  <h3 className="font-sans text-[15px] font-bold text-foreground mb-2">Tools</h3>
-                  <p className="font-sans text-[14px] text-[#555] leading-[1.65]">Figma, Sketch, Adobe XD, Framer, Miro, Adobe Illustrator, After Effects</p>
+                  <h3 className="font-display text-sm text-foreground mb-2">Tools</h3>
+                  <p className="font-mono text-xs text-muted-foreground leading-relaxed">Figma, Sketch, Adobe XD, Framer, Miro, Adobe Illustrator, After Effects</p>
                 </div>
                 <div>
-                  <h3 className="font-sans text-[15px] font-bold text-foreground mb-2">Collaboration</h3>
-                  <p className="font-sans text-[14px] text-[#555] leading-[1.65]">Stakeholder Workshops, Agile Methodologies, Developer Handoff, Design Documentation</p>
+                  <h3 className="font-display text-sm text-foreground mb-2">Collaboration</h3>
+                  <p className="font-mono text-xs text-muted-foreground leading-relaxed">Stakeholder Workshops, Agile Methodologies, Developer Handoff, Design Documentation</p>
                 </div>
               </div>
             </div>
 
             <div>
-              <h2 className="font-mono text-[10px] font-medium text-primary uppercase tracking-widest mb-8">
+              <h2 className="font-mono text-xs font-medium text-primary uppercase tracking-wider mb-8">
                 ACTIVITIES & INTERESTS
               </h2>
-              <p className="font-sans text-[14px] text-[#555] leading-[1.65]">
+              <p className="font-mono text-xs text-muted-foreground leading-relaxed">
                 Photography, Scale Model Collecting
               </p>
             </div>

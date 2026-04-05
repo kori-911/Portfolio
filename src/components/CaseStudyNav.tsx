@@ -44,7 +44,7 @@ const CaseStudyNav = () => {
           <button
             key={id}
             onClick={() => scrollToSection(id, 100)}
-            className={`text-right font-mono text-[10px] font-medium uppercase tracking-widest transition-colors ${
+            className={`text-right font-mono text-xs font-medium uppercase tracking-wider transition-colors ${
               activeSection === id
                 ? "text-primary"
                 : "text-muted-foreground hover:text-foreground"

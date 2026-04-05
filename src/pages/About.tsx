@@ -29,35 +29,35 @@ const About = () => {
       <div className="max-w-3xl mx-auto px-8 pt-32 pb-24">
         {/* Bio */}
         <motion.section className="mb-24" {...fadeIn}>
-          <h1 className="font-display text-5xl md:text-7xl text-foreground mb-6"><ScrambleText text="ABOUT" /></h1>
-          <div className="h-[2px] w-12 bg-primary mb-12" />
-          <p className="font-sans text-base text-foreground leading-[1.72] mb-6">
+          <h1 className="font-display text-4xl md:text-6xl text-foreground mb-8"><ScrambleText text="ABOUT" /></h1>
+          <div className="h-px w-16 bg-primary mb-12" />
+          <p className="font-mono text-sm text-foreground leading-relaxed mb-6 opacity-80">
             I came to UX from mechanical engineering — trained at NIFT New Delhi, started designing for healthcare and commerce, and spent the last four years deep in enterprise supply chain software at o9 Solutions.
           </p>
-          <p className="font-sans text-base text-foreground leading-[1.72] mb-6">
+          <p className="font-mono text-sm text-foreground leading-relaxed mb-6 opacity-80">
             The problems I find interesting are the ones nobody wants to draw: fragmented multi-step workflows, data-dense dashboards with twelve stakeholder opinions, systems that have to work for a first-time user and a power user simultaneously.
           </p>
-          <p className="font-sans text-base text-foreground leading-[1.72]">
+          <p className="font-mono text-sm text-foreground leading-relaxed opacity-80">
             Outside work: photography and scale model building — both are about patience, precision, and caring about things that are almost too small to matter.
           </p>
         </motion.section>
 
         {/* Philosophy */}
         <motion.section className="mb-24 border-t border-border pt-12" {...fadeIn}>
-          <span className="font-mono text-[10px] font-medium text-muted-foreground uppercase tracking-widest block mb-8">Design Philosophy</span>
-          <blockquote className="font-display text-3xl md:text-4xl text-foreground leading-tight">
+          <span className="font-mono text-xs font-medium text-muted-foreground uppercase tracking-wider block mb-8">Design Philosophy</span>
+          <blockquote className="font-display text-2xl md:text-3xl text-foreground leading-tight">
             "SYSTEMS OVER SCREENS. ACCESSIBILITY AS STANDARD."
           </blockquote>
         </motion.section>
 
         {/* Skills */}
         <motion.section className="mb-24 border-t border-border pt-12" {...fadeIn}>
-          <span className="font-mono text-[10px] font-medium text-muted-foreground uppercase tracking-widest block mb-8">Skills</span>
+          <span className="font-mono text-xs font-medium text-muted-foreground uppercase tracking-wider block mb-8">Skills</span>
           <div className="flex flex-wrap gap-3">
             {skills.map((skill) => (
               <span
                 key={skill}
-                className="font-mono text-[9.5px] font-medium uppercase tracking-[0.5px] text-muted-foreground bg-surface border border-border px-3 py-1.5 rounded-full"
+                className="border border-border px-4 py-2 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
               >
                 {skill}
               </span>
@@ -67,14 +67,14 @@ const About = () => {
 
         {/* Experience */}
         <motion.section className="mb-24 border-t border-border pt-12" {...fadeIn}>
-          <span className="font-mono text-[10px] font-medium text-muted-foreground uppercase tracking-widest block mb-8">Experience</span>
+          <span className="font-mono text-xs font-medium text-muted-foreground uppercase tracking-wider block mb-8">Experience</span>
           <div className="space-y-12">
             {experience.map((exp) => (
-              <div key={exp.period} className="border-l-[3px] border-primary bg-surface py-4 px-6 rounded-r-md">
-                <span className="font-mono text-[10px] font-medium text-primary uppercase tracking-widest block mb-2">{exp.period}</span>
-                <h3 className="font-sans text-lg font-bold text-foreground mb-1">{exp.role}</h3>
-                <span className="font-mono text-[10px] text-muted-foreground block mb-3 uppercase tracking-widest">{exp.company}</span>
-                <p className="font-sans text-sm text-[#555] leading-[1.65]">{exp.description}</p>
+              <div key={exp.period} className="border-l border-border pl-8">
+                <span className="font-mono text-xs font-medium text-primary uppercase tracking-wider block mb-2">{exp.period}</span>
+                <h3 className="font-display text-lg text-foreground mb-1">{exp.role}</h3>
+                <span className="font-mono text-xs text-muted-foreground block mb-3">{exp.company}</span>
+                <p className="font-mono text-xs text-foreground opacity-60">{exp.description}</p>
               </div>
             ))}
           </div>
@@ -85,12 +85,12 @@ const About = () => {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               to="/resume"
-              className="border border-border px-6 py-3 font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground hover:text-foreground hover:border-foreground transition-colors text-center"
+              className="border border-border px-8 py-4 font-mono text-xs font-medium uppercase tracking-wider text-muted-foreground hover:text-foreground hover:border-foreground transition-colors text-center"
             >
               View Full Resume →
             </Link>
             <ContactDrawer 
-              buttonClassName="border border-primary bg-primary text-primary-foreground px-6 py-3 font-mono text-[10px] font-medium uppercase tracking-widest hover:bg-primary/90 transition-colors text-center cursor-pointer w-full sm:w-auto" 
+              buttonClassName="border border-primary bg-primary text-primary-foreground px-8 py-4 font-mono text-xs font-medium uppercase tracking-wider hover:bg-primary/90 transition-colors text-center cursor-pointer w-full sm:w-auto" 
             />
           </div>
         </motion.section>

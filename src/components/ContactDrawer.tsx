@@ -19,7 +19,7 @@ const CopyableItem = ({ label, value }: { label: string; value: string }) => {
   return (
     <div className="mb-8">
       <div className="flex items-end justify-between mb-3 h-8">
-        <span className="font-mono text-[10px] font-medium text-muted-foreground uppercase tracking-widest">
+        <span className="font-mono text-xs font-medium text-muted-foreground uppercase tracking-wider">
           {label}
         </span>
         
@@ -31,7 +31,7 @@ const CopyableItem = ({ label, value }: { label: string; value: string }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 2 }}
               transition={{ duration: 0.15 }}
-              className="px-2 py-1 font-mono text-[10px] font-medium uppercase tracking-widest border bg-primary text-primary-foreground border-primary shadow-sm"
+              className="px-2 py-1 font-mono text-xs font-medium uppercase tracking-wider border bg-primary text-primary-foreground border-primary shadow-sm"
             >
               Copied
             </motion.div>
@@ -42,7 +42,7 @@ const CopyableItem = ({ label, value }: { label: string; value: string }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 2 }}
               transition={{ duration: 0.15 }}
-              className="px-2 py-1 font-mono text-[10px] font-medium uppercase tracking-widest border bg-background text-foreground border-border shadow-sm"
+              className="px-2 py-1 font-mono text-xs font-medium uppercase tracking-wider border bg-background text-foreground border-border shadow-sm"
             >
               Click to copy
             </motion.div>
@@ -54,14 +54,14 @@ const CopyableItem = ({ label, value }: { label: string; value: string }) => {
         onClick={handleCopy}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className={`group flex items-center justify-between w-full border p-4 transition-all duration-200 focus:outline-none text-left bg-background cursor-pointer ${
+        className={`group flex items-center justify-between w-full border p-5 transition-all duration-200 focus:outline-none text-left bg-background cursor-pointer ${
           copied
             ? "border-primary ring-1 ring-primary"
             : "border-border hover:border-foreground focus:border-foreground"
         }`}
         aria-label={`Copy ${label}`}
       >
-        <span className="font-mono text-[11px] text-foreground truncate mr-4">{value}</span>
+        <span className="font-mono text-sm text-foreground truncate mr-4">{value}</span>
         <div className="flex items-center justify-center shrink-0 w-5 h-5">
           {copied ? (
             <Check className="w-4 h-4 text-primary" />
@@ -126,7 +126,7 @@ export default function ContactDrawer({
       <button
         ref={buttonRef}
         onClick={handleToggle}
-        className={buttonClassName || "border border-primary bg-primary text-primary-foreground px-6 py-3 font-mono text-[10px] font-medium uppercase tracking-widest hover:bg-primary/90 transition-colors inline-block cursor-pointer"}
+        className={buttonClassName || "border border-primary bg-primary text-primary-foreground px-8 py-4 font-mono text-xs font-medium uppercase tracking-wider hover:bg-primary/90 transition-colors inline-block cursor-pointer"}
         aria-expanded={isOpen}
         aria-controls="contact-drawer"
       >
@@ -147,13 +147,13 @@ export default function ContactDrawer({
             aria-label="Contact Information"
           >
             <div className="p-8 border-b border-border flex items-center justify-between">
-              <h2 className="font-display text-3xl text-foreground">CONTACT</h2>
+              <h2 className="font-display text-2xl text-foreground">CONTACT</h2>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus:ring-1 focus:ring-primary p-2 cursor-pointer"
                 aria-label="Close drawer"
               >
-                <X className="w-5 h-5" />
+                <X className="w-6 h-6" />
               </button>
             </div>
 
@@ -162,17 +162,17 @@ export default function ContactDrawer({
               <CopyableItem label="Phone" value="+91 9328828275" />
 
               <div className="mb-8">
-                <span className="font-mono text-[10px] font-medium text-muted-foreground uppercase tracking-widest block mb-3">
+                <span className="font-mono text-xs font-medium text-muted-foreground uppercase tracking-wider block mb-3">
                   Social
                 </span>
                 <a
                   href="https://www.linkedin.com/in/kori911/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between w-full border border-border p-4 hover:border-foreground transition-colors focus:outline-none focus:ring-1 focus:ring-primary bg-background cursor-pointer"
+                  className="group flex items-center justify-between w-full border border-border p-5 hover:border-foreground transition-colors focus:outline-none focus:ring-1 focus:ring-primary bg-background cursor-pointer"
                   aria-label="Open LinkedIn profile in new tab"
                 >
-                  <span className="font-mono text-[11px] text-foreground">LinkedIn</span>
+                  <span className="font-mono text-sm text-foreground">LinkedIn</span>
                   <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
                 </a>
               </div>
